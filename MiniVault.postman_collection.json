@@ -1,0 +1,46 @@
+{
+  "info": {
+    "name": "MiniVault API",
+    "_postman_id": "f5e67be9-a098-40c3-9c4c-8b9894c847dc",
+    "description": "Test the MiniVault API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST /generate",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"Hello MiniVault!\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/generate",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["generate"]
+        }
+      }
+    },
+    {
+      "name": "POST /generate-stream",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"Stream this prompt.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/generate-stream",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["generate-stream"]
+        }
+      }
+    }
+  ]
+}

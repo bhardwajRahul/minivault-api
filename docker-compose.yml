@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  ollama:
+    image: ollama/ollama
+    networks:
+      - internal
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_MODEL=llama3
+    entrypoint: ["/bin/sh", "-c", "ollama serve & sleep 2 && ollama run ${OLLAMA_MODEL} && tail -f /dev/null"]
+
+  api:
+    build: .
+    networks:
+      - internal
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - ollama
+
+volumes:
+  ollama_data:
+
+networks:
+  internal:
